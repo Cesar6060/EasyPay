@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="EasyPay Test Suite" parallel="classes" thread-count="2">
+    <listeners>
+        <listener class-name="com.easypay.framework.reporting.TestListener"/>
+    </listeners>
+    
+    <test name="UI Tests">
+        <packages>
+            <package name="com.easypay.tests.ui"/>
+        </packages>
+    </test>
+    
+    <test name="API Tests">
+        <packages>
+            <package name="com.easypay.tests.api"/>
+        </packages>
+    </test>
+</suite>
