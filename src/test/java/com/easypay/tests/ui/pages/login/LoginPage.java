@@ -1,5 +1,6 @@
 package com.easypay.tests.ui.pages.login;
 
+import static com.codeborne.selenide.Selenide.$;
 import com.easypay.framework.core.ui.BasePage;
 import org.openqa.selenium.By;
 
