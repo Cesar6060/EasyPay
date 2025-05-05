@@ -1,7 +1,7 @@
 package com.easypay.framework.core.ui;
 
 import com.easypay.framework.config.ConfigManager;
-import io.github.bonigarcia.wdm.WebDriverFactory;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 /**
  * Factory class for creating WebDriver instances.
  */
-
 public class WebDriverFactory {
     private static final Logger logger = LoggerFactory.getLogger(WebDriverFactory.class);
     private static final ConfigManager config = ConfigManager.getInstance();
@@ -24,7 +23,6 @@ public class WebDriverFactory {
      * 
      * @return WebDriver instance
      */
-
     public static WebDriver createDriver() {
         String browser = config.getProperty("browser", "chrome").toLowerCase();
         boolean headless = config.getBooleanProperty("headless");
@@ -36,11 +34,11 @@ public class WebDriverFactory {
         switch (browser) {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
-                FirefoxOptions FirefoxOptions = new FirefoxOptions();
+                FirefoxOptions firefoxOptions = new FirefoxOptions(); // Fixed variable name
                 if (headless) {
-                    FirefoxOptions.addArguements("--headless");
+                    firefoxOptions.addArguments("--headless"); // Fixed method name
                 }
-                driver = new FirfoxDriver(FirefoxOptions);
+                driver = new FirefoxDriver(firefoxOptions); // Fixed class name
                 break;
 
             case "edge":
@@ -63,5 +61,4 @@ public class WebDriverFactory {
 
         return driver;
     }
-
 }
