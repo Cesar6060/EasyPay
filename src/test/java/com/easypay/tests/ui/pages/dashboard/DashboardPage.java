@@ -1,4 +1,4 @@
-package com.easypay.tests.ui
+package com.easypay.tests.ui.pages.dashboard;
 
 import com.easypay.framework.core.ui.BasePage;
 import org.openqa.selenium.By;
@@ -13,7 +13,7 @@ public class DashboardPage extends BasePage {
     private final By productsTitle = By.className("title");
     private final By menuButton = By.id("react-burger-menu-btn");
     private final By logoutLink = By.id("logout_sidebar_link");
-    
+
     /**
      * Check if the dashboard is loaded and user is logged in.
      * 
@@ -26,7 +26,7 @@ public class DashboardPage extends BasePage {
             return false;
         }
     }
-    
+
     /**
      * Logout the current user.
      */
@@ -35,7 +35,7 @@ public class DashboardPage extends BasePage {
         click(menuButton);
         click(logoutLink);
     }
-    
+
     @Override
     public void verifyPageLoaded() {
         waitForElementVisible(productsTitle);
