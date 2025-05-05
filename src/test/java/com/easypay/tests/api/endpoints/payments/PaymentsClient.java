@@ -9,8 +9,8 @@ import io.restassured.response.Response;
  * API client for payment-related endpoints.
  * Uses JSONPlaceholder as a test API for demonstration.
  */
-
 public class PaymentsClient extends BaseApiClient {
+    // Using /posts endpoint from JSONPlaceholder as a demo
     private static final String PAYMENTS_ENDPOINT = "/posts";
 
     /**
@@ -19,11 +19,20 @@ public class PaymentsClient extends BaseApiClient {
      * @param paymentRequest the payment request details
      * @return the payment response
      */
+    public PaymentResponse createPayment(PaymentRequest paymentRequest) {
+        Response response = post(PAYMENTS_ENDPOINT, paymentRequest);
+        return response.as(PaymentResponse.class);
+    }
 
+    /**
+     * Get payment details by ID.
+     * 
+     * @param paymentId the payment ID
+     * @return the payment response
+     */
     public PaymentResponse getPayment(String paymentId) {
         Response response = get(PAYMENTS_ENDPOINT + "/" + paymentId);
         return response.as(PaymentResponse.class);
-
     }
 
     /**
@@ -32,12 +41,10 @@ public class PaymentsClient extends BaseApiClient {
      * @param paymentId the payment ID
      * @return the updated payment response
      */
-
     public PaymentResponse cancelPayment(String paymentId) {
         // In a real implementation, this would be a proper endpoint call
         // For this example, we're using DELETE as a placeholder
         Response response = delete(PAYMENTS_ENDPOINT + "/" + paymentId);
         return response.as(PaymentResponse.class);
-
     }
 }
